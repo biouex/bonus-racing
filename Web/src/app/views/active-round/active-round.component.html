@@ -1,0 +1,52 @@
+<div *ngIf="round" class="ibox">
+    <div class="ibox-title"><h3>{{round.name}}</h3></div>
+    <div class="ibox-content">
+        <div *ngIf="round.pause != null && round.state === 'active'" class="alert alert-danger">Пауза</div>
+        <div *ngIf="round.state ==='archived'" class="alert alert-success">В архиве</div>
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+                    <dt>Статус:</dt>
+                    <dd>{{round.state}}</dd>
+                    <dt>Дата создания:</dt>
+                    <dd>{{round.created | date:'yyyy-MM-dd HH:mm:ss'}}</dd>
+                    <dt>Длительность:</dt>
+                    <dd>{{round.duration}}</dd>
+                    <dt>Дата начала:</dt>
+                    <dd>{{round.start | date:'yyyy-MM-dd HH:mm:ss'}}</dd>
+                    <dt>Дата окончания:</dt>
+                    <dd>{{round.end | date:'yyyy-MM-dd HH:mm:ss'}}</dd>
+                    <dt>Пауза:</dt>
+                    <dd *ngIf="round.pause == null">Нет</dd>
+                    <dd *ngIf="round.pause != null" class="text-danger">Да, с {{round.pause | date:'yyyy-MM-dd HH:mm:ss'}}</dd>
+                </dl>
+            </div>
+            <div class="col-md-6" *plrHasRole="['roundStart']">
+                <button (click)="onClickOpenDemo()" class="btn btn-success">Открыть демонстрационное окно</button>
+                <button *ngIf="round.end == null" (click)="onClickSetDraft()" class="btn btn-warning">Убрать из активного</button>
+                <button *ngIf="round.end != null && round.state=='active'" (click)="onClickComplete()" class="btn btn-primary">Завершить</button>
+                <button *ngIf="round.end == null" (click)="onClickStart()" class="btn btn-primary">Запустить</button>
+                <button *ngIf="round.end != null && (!roundEnded) && round.pause == null" (click)="onClickPause()" class="btn btn-danger">Пауза</button>
+                <button *ngIf="round.pause != null && (round.state=='active')" (click)="onClickContinue()" class="btn btn-primary">Продолжить</button>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Игроки</th>
+                    <th>Очки</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ratingItem of rating; let i = index">
+                    <th>{{i+1}}</th>
+                    <td>{{ratingItem.playerId}}</td>
+                    <td>{{ratingItem.points}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<h4 *ngIf="!round" class="text-danger">Нет активного раунда!</h4>
+<confirm-popup></confirm-popup>

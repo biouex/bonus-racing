@@ -1,0 +1,28 @@
+<div class="ibox">
+    <div class="ibox-title"><h3>Раунды</h3></div>
+    <div class="ibox-content">
+        <table *ngIf="rounds" class="table table-striped">
+            <tbody>
+                <tr *ngFor="let round of rounds">
+                    <td>
+                        <a [routerLink]="['./', round.id]">
+                            {{round.name}}
+                        </a>
+                    </td>
+                    <td>
+                        {{round.created | date:'yyyy-MM-dd HH:mm:ss'}}
+                    </td>
+                    <td [ngSwitch]="round.state">
+                        <span *ngSwitchCase="'active'" class="text-danger">Active</span>
+                        <span *ngSwitchCase="'draft'">Draft</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <span *ngIf="rounds.length==0">Раундов нет, создайте с помощью кнопки "Создать новый"</span>
+        <div class="clearfix">
+            <button (click)="onClickNewRound()" class="btn btn-primary pull-right">Создать новый</button>
+        </div>
+    </div>
+</div>
+<new-round-popup></new-round-popup>

@@ -1,0 +1,52 @@
+.nav > .nav-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:50px;
+    background-image: url('patterns/header-profile-skin-1.png');
+}
+
+.nav > .nav-title > a {
+    padding: 16px 0 17px;
+    font-size: 14px;
+    color: #FFF;
+}
+
+.navbar-default .nav > li.nav-title > a:focus,
+.navbar-default .nav > li.nav-title > a:hover {
+    background: unset;
+}
+
+body.mini-navbar .for-full-navbar {
+    display: none;
+}
+
+body .for-mini-navbar {
+    display: none;
+}
+
+body.mini-navbar .for-mini-navbar {
+    display: inline!important;
+}
+
+.nav-header-custom {
+    padding: 12px 5px 12px 14px;
+}
+
+.nav-header-custom > .profile-element img {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.nav > li.active {
+    border-left: 4px solid #0e9aef;
+}
+
+.navbar-top-links li a {
+    padding: 15px 10px;
+}
+
+.inline-block {
+    display: inline-block!important;
+}

@@ -1,0 +1,15 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <h3>Операторы</h3>
+    </div>
+    <div class="ibox-content">
+        <ul class="list-group">
+            <li *ngFor="let user of users" class="list-group-item">
+                <a [routerLink]="['./', user.id]">{{user.userName}}</a>
+                <button (click)="onClickDelete(user)"class="btn btn-xs btn-danger pull-right"><i class="fa fa-trash"></i></button>
+            </li>
+        </ul>
+        <a [routerLink]="['./new']"class="btn btn-primary">Новый оператор</a>
+    </div>
+</div>
+<confirm-popup></confirm-popup>

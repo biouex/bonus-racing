@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'sochi';
+    src: url(assets/fonts/sochi_2014.ttf);
+}
+
+@font-face {
+    font-family: 'asket';
+    src: url(assets/fonts/asket/TTF/Asket_Extrabold.ttf);
+}
+
+@keyframes text-flash-red {
+    0% {
+        color: rgb(255, 255, 255);
+    }
+    50% {
+        color: rgb(255, 0, 0);
+    }
+    100% {
+        color: rgb(255, 255, 255);
+    }
+}
+
+@keyframes text-flash-yellow {
+    0% {
+        color: rgb(255, 255, 255);
+    }
+    50% {
+        color: rgb(254, 230, 0);
+    }
+    100% {
+        color: rgb(255, 255, 255);
+    }
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'asket', Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url(assets/images/bk_top.jpg);
+    background-size: 100% 100%;
+}
+
+.btn-start {
+    position: absolute;
+    left: 200px;
+    bottom: 230px;
+    padding: 15px 50px;
+    border-radius: 10px;
+    border: 5px dotted #FFF;
+    background: 0;
+    color: #FFF;
+    font-size: 60px;
+}
+.btn-start:hover {
+    border: 5px solid #FFF;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+
+/* list */
+.list {
+    position: absolute;
+    top: 38%;
+    right: 4%;
+    width: 43%;
+    font-size: 4vw;
+    color: #FFF;
+    line-height: 1em;
+}
+
+.list__item {
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.list__content {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    color: #FFF;
+}
+
+.list__item:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.list__col {
+    width: 100%;
+}
+
+.list__col-1 {
+    float: left;
+    width: 60%;
+}
+
+.list__col-2 {
+    float: left;
+    width: 40%;
+    text-align: right;
+}
+
+/* TIMER */
+
+.timer {
+    position: absolute;
+    left: 2%;
+    right: 53%;
+    top: 44%;
+    text-align: center;
+    font-size: 12.5vw;
+    font-family: 'sochi';
+    font-style: italic;
+    color: #FFF;
+}
+
+.timer--pause {
+    animation: text-flash-red 1s linear infinite;
+}
+
+/* WINNER */
+
+.winner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: url(assets/images/bk_winner.jpg);
+    background-size: 100% 100%;
+    animation: text-flash-yellow 1s linear infinite;
+}
+
+.winner > span {
+    position: absolute;
+    top: 50%;
+    margin-top: -0.5em;
+    line-height: 1em;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 9vw;
+}
+
+/* @media (max-width: 1300px) {
+    .list {
+        top: 245px;
+        right: 40px;
+        font-size: 50px;
+    }
+
+    .timer {
+        font-size: 145px;
+    }
+
+    .winner {
+        padding-top: 160px;
+    }
+} */

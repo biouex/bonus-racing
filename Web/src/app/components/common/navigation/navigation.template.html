@@ -1,0 +1,37 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-title">
+                <a routerLink="/">
+                    <span class="for-full-navbar">Гонка бонусных баллов</span>
+                    <span class="for-mini-navbar">Гонка</span>
+                </a>
+            </li>
+            <li class="nav-header nav-header-custom">
+                <div class="profile-element">
+                    <b>{{userName}}</b>
+                </div>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/active">
+                    <i class="fa fa-exclamation"></i> <span class="nav-label">Активный</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/rounds">
+                    <i class="fa fa-code-fork"></i> <span class="nav-label">Раунды</span>
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="/archive">
+                    <i class="fa fa-archive"></i> <span class="nav-label">Архив</span>
+                </a>
+            </li>
+            <li routerLinkActive="active" *plrHasRole="['userManagement']">
+                <a routerLink="/users">
+                    <i class="fa fa-users"></i> <span class="nav-label">Операторы</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

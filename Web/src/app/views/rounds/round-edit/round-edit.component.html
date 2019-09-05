@@ -1,0 +1,62 @@
+<div *ngIf="round" class="ibox">
+    <div class="ibox-content">
+        <div class="row form-group">
+            <label class="control-label col-md-2">Название</label>
+            <div class="col-md-10">
+                <input [(ngModel)]="name" class="form-control">
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="control-label col-md-2">Длительность(мин)</label>
+            <div class="col-md-3">
+                <input [(ngModel)]="duration" class="form-control" type="number">
+            </div>
+            <div class="col-md-1">
+                <button *ngIf="name != round.name || duration != round.duration" (click)="onClickUpdate()" class="btn btn-primary">Сохранить изменения</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="round" class="ibox">
+    <div class="ibox-content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Номера игроков</th>
+                    <th style="width: 100px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let player of round.players; let i = index">
+                    <td>{{i + 1}}</td>
+                    <td>{{player.playerId}}</td>
+                    <td><button (click)="onClickDeletePlayer(player)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-1">
+                    <button (click)="onClickRefreshPlayerList()" class="btn btn-success btn-outline"><i class="fa fa-refresh"></i></button>
+                </div>
+                <label class="col-md-2 control-label">Добавить нового игрока</label>
+                <div class="col-md-7">
+                    <input [(ngModel)]="newPlayerId" class="form-control" placeholder="Номер игрока" type="text">
+                </div>
+                <div class="col-md-2">
+                    <button (click)="onClickAddPlayer()" class="btn btn-primary btn-block">Добавить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a [routerLink]="['../']" class="btn btn-white">К списку</a>
+    <span *plrHasRole="['roundStart']">
+        <button *ngIf="(round != null) && (round.state==='draft')" (click)="onClickSetActive()" class="btn btn-danger pull-right">Сделать активным</button>
+    </span>
+    
+</div>
+<confirm-popup></confirm-popup>

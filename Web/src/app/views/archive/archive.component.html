@@ -1,0 +1,30 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <h3>Архив</h3>
+    </div>
+    <div class="ibox-content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Название</th>
+                    <th>Дата окончания</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let round of archivalRounds; let i = index">
+                    <td>{{countItems - (page*count) - i}}</td>
+                    <td><a [routerLink]="['./', round.id]">{{round.name}}</a></td>
+                    <td>{{round.end | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <div class="btn-group">
+                <button (click)="prevPage()" class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
+                <button class="btn btn-white active">{{page+1}}/{{countPages}}</button>
+                <button (click)="nextPage()" class="btn btn-white"><i class="fa fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

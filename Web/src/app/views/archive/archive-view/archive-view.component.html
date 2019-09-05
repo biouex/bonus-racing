@@ -1,0 +1,77 @@
+<div *ngIf="round" class="ibox">
+    <div class="ibox-title">
+        <h3>{{round.name}}</h3>
+    </div>
+    <div class="ibox-content">
+        <div>
+            <dl class="dl-horizontal">
+                <dt>Дата создания:</dt>
+                <dd>{{round.created | date:'yyyy-MM-dd HH:mm:ss'}}</dd>
+                <dt>Длительность:</dt>
+                <dd>{{round.duration}}</dd>
+                <dt>Дата начала:</dt>
+                <dd>{{round.start | date:'yyyy-MM-dd HH:mm:ss'}}</dd>
+                <dt>Дата окончания:</dt>
+                <dd>{{round.end | date:'yyyy-MM-dd HH:mm:ss'}}</dd>
+            </dl>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-2">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Игрок</th>
+                            <th>Очки</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let player of players; let i = index" (click)="onSelectPlayer(player.playerId)" [ngClass]="{'active': player.playerId == selectedPlayer}">
+                            <td>{{i+1}}</td>
+                            <td>{{player.playerId}}</td>
+                            <td>{{player.points}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-10">
+                <h4 *ngIf="!selectedPlayerData" class="text-muted text-center m-t">Выберите игрока в таблице слева, что бы увидеть детальные данные.</h4>
+                <table *ngIf="selectedPlayerData" class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Дата получения</th>
+                            <th>Session ID</th>
+                            <th>Card Number</th>
+                            <th>Player ID</th>
+                            <th>Имя</th>
+                            <th>Фамилия</th>
+                            <th>Отчество</th>
+                            <th>IdenCardId</th>
+                            <th>Mach ID</th>
+                            <th>Update</th>
+                            <th>Очки</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of selectedPlayerData; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{data.receivingDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                            <td>{{data.sessionId}}</td>
+                            <td>{{data.cardNumber}}</td>
+                            <td>{{data.playerId}}</td>
+                            <td>{{data.firstName}}</td>
+                            <td>{{data.lastName}}</td>
+                            <td>{{data.middleName}}</td>
+                            <td>{{data.idenCardId}}</td>
+                            <td>{{data.machId}}</td>
+                            <td>{{data.updateDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                            <td>{{data.earnedPoints}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

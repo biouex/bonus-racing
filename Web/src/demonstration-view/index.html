@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo View</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="timer" class="timer"></div>
+        <div id="ratingList" class="list list--rating" style="display:none;">
+            <ul id="ratingContent" class="list__content">
+                <li class="list__item">
+                    <div class="list__col-1"></div>
+                    <div class="list__col-2"></div>
+                </li>
+            </ul>
+        </div>
+        <div id="playersList" class="list" style="display:none;">
+            <ul id="playersContent" class="list__content">
+                <li class="list__item">
+                    <div class="list__col"></div>
+                </li>
+            </ul>
+        </div>
+        <div id="winner" class="winner" style="display:none;">
+            <span id="winner-id"></span>
+        </div>
+    </div>
+    <script src="assets/jquery-3.3.1.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<bs-modal #modalPopup [backdrop]="false">
+        <bs-modal-header [showDismiss]="true">
+            <div class="text-center">
+                <h4>Добавить раунд</h4>
+            </div>
+        </bs-modal-header>
+        <bs-modal-body>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label for="" class="col-md-3 control-label">Название</label>
+                    <div class="col-md-9">
+                        <input [(ngModel)]="name" class="form-control">
+                    </div>
+                </div>
+                <div *ngIf="copyBy==''" class="form-group">
+                    <label for="" class="col-md-3 control-label">Длительность</label>
+                    <div class="col-md-9">
+                        <input [(ngModel)]="duration" class="form-control" type="number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-md-3 control-label">Скопировать игроков из</label>
+                    <div class="col-md-9">
+                        <select [(ngModel)]="copyBy" class="form-control">
+                            <option value="" selected>Не делать копию</option>
+                            <option *ngFor="let round of rounds" [ngValue]="round.id">{{round.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </bs-modal-body>
+        <bs-modal-footer>
+            <button type="button" class="btn btn-primary" (click)="ok()">Создать</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="dismissPopup()">Отмена</button>
+        </bs-modal-footer>
+    </bs-modal>
